@@ -153,17 +153,16 @@ export {
   hexToBn,
 };
 
-// Taken from https://stackoverflow.com/a/1349426/3696652
 const characters =
   'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+
 export const generateRandomId = () => {
-  let result = '';
   const charactersLength = characters.length;
-  for (let i = 0; i < 20; i++) {
-    result += characters.charAt(Math.floor(Math.random() * charactersLength));
-  }
-  return result;
+  return Array.from({ length: 20 }, () =>
+    characters.charAt(Math.floor(Math.random() * charactersLength))
+  ).join('');
 };
+
 
 export const isValidDate = (d: Date | number) => {
   return d instanceof Date;
